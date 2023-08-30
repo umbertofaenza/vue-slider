@@ -31,6 +31,7 @@ createApp({
         },
       ],
       activeSlideIndex: 0,
+      autoplay: false,
     };
   },
 
@@ -52,5 +53,22 @@ createApp({
     activateSlide(index) {
       this.activeSlideIndex = index;
     },
+    setAutoplay() {
+      if (!this.autoplay) {
+        this.autoplay = setInterval(() => {
+          this.goNext();
+        }, 3000);
+      }
+    },
+    stopAutoplay() {
+      if (this.autoplay) {
+        clearInterval(this.autoplay);
+        this.autoplay = false;
+      }
+    },
+  },
+
+  created() {
+    this.setAutoplay();
   },
 }).mount("#app");
