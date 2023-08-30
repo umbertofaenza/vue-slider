@@ -33,4 +33,21 @@ createApp({
       activeSlideIndex: 0,
     };
   },
+
+  methods: {
+    goNext() {
+      if (this.activeSlideIndex < this.slides.length - 1) {
+        this.activeSlideIndex++;
+      } else {
+        this.activeSlideIndex = 0;
+      }
+    },
+    goPrev() {
+      if (this.activeSlideIndex > 0) {
+        this.activeSlideIndex--;
+      } else {
+        this.activeSlideIndex = this.slides.length - 1;
+      }
+    },
+  },
 }).mount("#app");
